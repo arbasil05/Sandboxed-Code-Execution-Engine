@@ -18,7 +18,7 @@ async def submit_code(submission: CodeSubmission):
     """
     Takes code, enqueues it for a background worker, and returns a tracking ID.
     """
-    valid_languages = ["python", "javascript", "cpp"]
+    valid_languages = ["python", "javascript", "cpp","java"]
     if submission.language.lower() not in valid_languages:
         raise HTTPException(status_code=400, detail="Unsupported language")
 

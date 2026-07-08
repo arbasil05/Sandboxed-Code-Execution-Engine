@@ -9,7 +9,7 @@ docker_client = docker.from_env()
 
 IDLE_POOL_KEY = "pool:idle"
 BUSY_POOL_KEY = "pool:busy"
-IMAGE_NAME = "python:3.10-slim"
+IMAGE_NAME = "code-runner:latest"
 
 def provision_new_container():
 
@@ -26,7 +26,7 @@ def provision_new_container():
         mem_limit="128m",
         pids_limit=50,
         read_only=True,
-        tmpfs={'/tmp':''}
+        tmpfs={'/tmp': 'exec'}
     )
 
     redis_client.sadd(IDLE_POOL_KEY, container_id)
